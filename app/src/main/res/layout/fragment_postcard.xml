@@ -1,51 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background_snow"
-    tools:context=".PostcardFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <data>
+
+        <variable
+            name="card"
+            type="com.oshovenko.cardapp.data.PostcardViewModel" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@{card.background}"
+        tools:context=".ui.PostcardFragment">
 
-        <TextView
-            android:id="@+id/Title"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:text="Title" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/from"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="from" />
+            <TextView
+                android:id="@+id/Title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:fontFamily="@font/archivo_black"
+                android:gravity="center"
+                android:text="@{card.title}"
+                android:textColor="@color/red"
+                android:textSize="60sp" />
 
-        <ImageView
-            android:id="@+id/avatar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:src="@tools:sample/avatars" />
+            <TextView
+                android:id="@+id/from"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/archivo_black"
+                android:gravity="center"
+                android:text="from"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/cardText"
-            android:layout_width="match_parent"
-            android:layout_height="218dp"
-            android:text="TextView" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/avatar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                app:srcCompat="@{card.avatar}" />
 
-        <ImageView
-            android:id="@+id/face"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:src="@tools:sample/avatars" />
+            <TextView
+                android:id="@+id/cardText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:text="@{card.text}"
+                android:textColor="@color/red"
+                android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Name" />
-    </LinearLayout>
-</FrameLayout>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/face"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                app:srcCompat="@{card.face}" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:fontFamily="@font/archivo_black"
+                android:gravity="center"
+                android:text="@{card.name}"
+                android:textColor="@color/red"
+                android:textSize="60sp" />
+        </LinearLayout>
+    </FrameLayout>
+</layout>

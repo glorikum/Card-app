@@ -3,43 +3,49 @@ package com.oshovenko.cardapp.ui
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
-import com.oshovenko.cardapp.data.PostcardViewModel
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.oshovenko.cardapp.R
 import com.oshovenko.cardapp.data.ObservableCard
+import com.oshovenko.cardapp.data.PostcardViewModel
 import com.oshovenko.cardapp.databinding.FragmentPostcardBinding
+import com.oshovenko.cardapp.ui.MainFragment.Companion.avatarImageKey
+import com.oshovenko.cardapp.ui.MainFragment.Companion.backgroundImageKey
+import com.oshovenko.cardapp.ui.MainFragment.Companion.cardTextKey
+import com.oshovenko.cardapp.ui.MainFragment.Companion.faceImageKey
+import com.oshovenko.cardapp.ui.MainFragment.Companion.nameKey
+import com.oshovenko.cardapp.ui.MainFragment.Companion.sharedPrefsKey
+import com.oshovenko.cardapp.ui.MainFragment.Companion.titleTextKey
 
 class PostcardFragment : Fragment() {
+
     private lateinit var binding: FragmentPostcardBinding
-    private lateinit var viewModel: PostcardViewModel
+    private val viewModel: PostcardViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val observableCard = getCard()
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_postcard, container, false)
-        viewModel = PostcardViewModel(observableCard)
-        binding.card = viewModel
+
+        binding = FragmentPostcardBinding.inflate(inflater)
+        binding.card = observableCard
         return binding.root
     }
 
     private fun getCard(): ObservableCard {
-        val appSettings: SharedPreferences = (this.activity?.getSharedPreferences("appcardsettings", Context.MODE_PRIVATE)
-                ?: null) as SharedPreferences
+        val appSettings: SharedPreferences = this.activity?.getSharedPreferences(sharedPrefsKey, Context.MODE_PRIVATE) as SharedPreferences
 
         return ObservableCard(
-                appSettings.getString("inputTitleText", "oops"),
-                appSettings.getString("inputName", "oops"),
-                appSettings.getString("textCard", "oops"),
-                appSettings.getInt("avatarImage", R.drawable.background_fire),
-                appSettings.getInt("faceImage", R.drawable.background_fire),
-                appSettings.getInt("backgroundImage", R.drawable.background_fire)
+                appSettings.getString(titleTextKey, "oops"),
+                appSettings.getString(nameKey, "oops"),
+                appSettings.getString(cardTextKey, "oops"),
+                appSettings.getInt(avatarImageKey, R.drawable.background_fire),
+                appSettings.getInt(faceImageKey, R.drawable.background_fire),
+                appSettings.getInt(backgroundImageKey, R.drawable.background_fire),
         )
     }
 }

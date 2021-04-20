@@ -1,8 +1,6 @@
 package com.oshovenko.cardapp.data
 
 
-
-
 data class ObservableCard(
         val title: String?,
         val name: String?,

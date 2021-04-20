@@ -3,37 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-    </data>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.MainFragment">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:context=".ui.MainFragment">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/backgroundImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/background_snow"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="0dp" />
+                app:srcCompat="@drawable/background_snow" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline1"
+                android:id="@+id/mainTopGuideline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.4" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline2"
+                android:id="@+id/mainBotGuideline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -45,8 +35,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Name:"
-                android:textSize="12sp"
+                android:text="@string/name"
+                android:textSize="@dimen/main_enter_text_size"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,8 +44,6 @@
                 android:id="@+id/textInputLayout"
                 android:layout_width="142dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nameTitle">
 
@@ -63,10 +51,10 @@
                     android:id="@+id/inputName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
-                    android:backgroundTint="#FFFFFF"
-                    android:hint="Enter name here"
-                    android:textSize="12sp" />
+                    android:background="@color/white"
+                    android:backgroundTint="@color/white"
+                    android:hint="@string/enter_name_here"
+                    android:textSize="@dimen/main_enter_text_size" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,8 +63,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Title:"
-                android:textSize="12sp"
+                android:text="@string/title"
+                android:textSize="@dimen/main_enter_text_size"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
@@ -91,18 +79,18 @@
                     android:id="@+id/inputTitleText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
-                    android:backgroundTint="#FFFFFF"
-                    android:hint="Enter title here"
-                    android:textSize="12sp" />
+                    android:background="@color/white"
+                    android:backgroundTint="@color/white"
+                    android:hint="@string/enter_title_here"
+                    android:textSize="@dimen/main_enter_text_size" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/textTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Text"
-                android:textSize="12sp"
+                android:text="@string/text"
+                android:textSize="@dimen/main_enter_text_size"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
@@ -117,18 +105,18 @@
                     android:id="@+id/inputTextCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
-                    android:backgroundTint="#FFFFFF"
-                    android:hint=" Enter text here"
-                    android:textSize="12sp" />
+                    android:background="@color/white"
+                    android:backgroundTint="@color/white"
+                    android:hint="@string/enter_text_here"
+                    android:textSize="@dimen/main_enter_text_size" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/buttonTest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Test"
-                app:layout_constraintBottom_toTopOf="@+id/guideline1"
+                android:text="@string/test"
+                app:layout_constraintBottom_toTopOf="@+id/mainTopGuideline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -139,8 +127,8 @@
                 android:id="@+id/buttonLaunch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Launch"
-                app:layout_constraintBottom_toTopOf="@+id/guideline1"
+                android:text="@string/launch"
+                app:layout_constraintBottom_toTopOf="@+id/mainTopGuideline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/buttonTest" />
@@ -149,7 +137,7 @@
                 android:id="@+id/avatarImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/guideline1"
+                app:layout_constraintBottom_toTopOf="@+id/mainTopGuideline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.8"
                 app:layout_constraintStart_toStartOf="parent"
@@ -161,57 +149,57 @@
                 android:id="@+id/faceImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/guideline2"
+                app:layout_constraintBottom_toTopOf="@+id/mainBotGuideline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline1"
-               app:srcCompat="@drawable/fjb1" />
+                app:layout_constraintTop_toTopOf="@+id/mainTopGuideline"
+               app:srcCompat="@drawable/face" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/faceButtonRight"
                 android:layout_width="96dp"
                 android:layout_height="86dp"
-                android:background="#00FFFFFF"
-                android:src="@drawable/baseline_arrow_forward_24"
+                android:background="#@color/opaque"
+                android:src="@drawable/baseline_arrow_forward_ios_24"
                 android:tint="@color/blue"
-                app:layout_constraintBottom_toTopOf="@+id/guideline2"
+                app:layout_constraintBottom_toTopOf="@+id/mainBotGuideline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/faceImage"
-                app:layout_constraintTop_toTopOf="@+id/guideline1" />
+                app:layout_constraintTop_toTopOf="@+id/mainTopGuideline" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/faceButtonLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#00FFFFFF"
+                android:background="#@color/opaque"
                 android:src="@drawable/baseline_arrow_back_24"
                 android:tint="@color/blue"
-                app:layout_constraintBottom_toTopOf="@+id/guideline2"
+                app:layout_constraintBottom_toTopOf="@+id/mainBotGuideline"
                 app:layout_constraintEnd_toStartOf="@+id/faceImage"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline1" />
+                app:layout_constraintTop_toTopOf="@+id/mainTopGuideline" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/presetButtonRight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#00FFFFFF"
+                android:background="#@color/opaque"
                 android:src="@drawable/baseline_arrow_forward_ios_24"
                 android:tint="@color/blue"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline2" />
+                app:layout_constraintTop_toTopOf="@+id/mainBotGuideline" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/presetButtonLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#00FFFFFF"
+                android:background="@color/opaque"
                 android:src="@drawable/baseline_arrow_back_ios_24"
                 android:tint="@color/blue"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline2" />
+                app:layout_constraintTop_toTopOf="@+id/mainBotGuideline" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="206dp"
@@ -219,7 +207,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/backgroundImage"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline2">
+                app:layout_constraintTop_toTopOf="@+id/mainBotGuideline">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -238,19 +226,16 @@
                         android:id="@+id/textView"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="TextView" />
+                        android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/textView2"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="TextView" />
+                        android:layout_weight="1" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </FrameLayout>
 </layout>

@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="card"
-            type="com.oshovenko.cardapp.data.PostcardViewModel" />
+            type="com.oshovenko.cardapp.data.ObservableCard" />
     </data>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@{card.background}"
-        tools:context=".ui.PostcardFragment">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            background="@{card.background}"
+            tools:context=".ui.PostcardFragment">
 
             <TextView
                 android:id="@+id/Title"
@@ -39,7 +33,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/archivo_black"
                 android:gravity="center"
-                android:text="from"
+                android:text="@string/from"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 
@@ -48,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
-                app:srcCompat="@{card.avatar}" />
+                srcCompat="@{card.avatar}" />
 
             <TextView
                 android:id="@+id/cardText"
@@ -65,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
-                app:srcCompat="@{card.face}" />
+                srcCompat="@{card.face}" />
 
             <TextView
                 android:id="@+id/name"
@@ -78,5 +72,4 @@
                 android:textColor="@color/red"
                 android:textSize="60sp" />
         </LinearLayout>
-    </FrameLayout>
 </layout>

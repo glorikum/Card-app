@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class PostcardViewModel(private val observableCard: ObservableCard){
-    private  val _title = MutableLiveData(observableCard.title)
+class PostcardViewModel(observableCard: ObservableCard) : ViewModel() {
+    private val _title = MutableLiveData(observableCard.title)
     private val _name = MutableLiveData(observableCard.name)
-    private val _text =  MutableLiveData(observableCard.text)
-    private val _avatar =  MutableLiveData(observableCard.avatar)
-    private val _face =  MutableLiveData(observableCard.face)
-    private val _background =  MutableLiveData(observableCard.background)
+    private val _text = MutableLiveData(observableCard.text)
+    private val _avatar = MutableLiveData(observableCard.avatar)
+    private val _face = MutableLiveData(observableCard.face)
+    private val _background = MutableLiveData(observableCard.background)
 
     val title: LiveData<String?> = _title
     val name: LiveData<String?> = _name

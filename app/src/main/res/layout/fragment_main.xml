@@ -114,7 +114,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textTitle">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/InputTextCard"
+                    android:id="@+id/inputTextCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFFFFF"
@@ -155,7 +155,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.2"
-                app:srcCompat="@drawable/fjb1" />
+                app:srcCompat="@drawable/apple" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/faceImage"

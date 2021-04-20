@@ -1,14 +1,14 @@
 package com.oshovenko.cardapp.ui
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.text.TextUtils.replace
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
 import com.oshovenko.cardapp.data.MainViewModel
 import com.oshovenko.cardapp.R
@@ -35,15 +35,22 @@ class MainFragment : Fragment() {
 
 
     private fun buttonTestClick() {
-        observableCard = ObservableCard(
-            binding.inputTitleText.toString(),
-            binding.inputName.toString(),
-            binding.InputTextCard.toString(),
-            binding.avatarImage.id,
-            binding.faceImage.id,
-            binding.backgroundImage.id
-        )
+        saveValue()
+
         findNavController().navigate(R.id.postcardFragment)
+    }
+
+    private fun saveValue() {
+        val appSettings: SharedPreferences = (this.activity?.getSharedPreferences("appcardsettings", Context.MODE_PRIVATE)
+                ?: null) as SharedPreferences
+        val editor: SharedPreferences.Editor = appSettings.edit()
+        editor.putString("inputTitleText", binding.inputTitleText.text.toString());
+        editor.putString("inputName", binding.inputName.text.toString());
+        editor.putString("textCard", binding.inputTextCard.text.toString());
+        editor.putInt("avatarImage", R.drawable.apple);
+        editor.putInt("faceImage", R.drawable.fjb1);
+        editor.putInt("backgroundImage",  R.drawable.background_snow);
+        editor.apply()
     }
 
 }

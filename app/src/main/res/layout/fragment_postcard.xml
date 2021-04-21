@@ -13,26 +13,36 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@{card.background}"
         tools:context=".ui.PostcardFragment">
 
-        <LinearLayout
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/backgroundImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:scaleType="centerCrop"
+            tools:src="@{card.background}" />
 
-            <TextView
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutDescription="@xml/fragment_postcard_xml_constraintlayout_scene">
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/Title"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="123dp"
+                android:layout_marginTop="16dp"
                 android:layout_weight="2"
                 android:fontFamily="@font/archivo_black"
                 android:gravity="center"
                 android:text="@{card.title}"
                 android:textColor="@color/red"
-                android:textSize="60sp" />
+                android:textSize="60sp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="3dp" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/from"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -41,33 +51,41 @@
                 android:gravity="center"
                 android:text="from"
                 android:textColor="#FFFFFF"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="155dp" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/avatar"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="2"
-                app:srcCompat="@{card.avatar}" />
+                app:srcCompat="@{card.face}"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="214dp" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/cardText"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="125dp"
                 android:layout_weight="3"
                 android:gravity="center|center_horizontal|center_vertical"
                 android:text="@{card.text}"
                 android:textColor="@color/red"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="-16dp"
+                tools:layout_editor_absoluteY="310dp" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/face"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="40dp"
                 android:layout_weight="2"
-                app:srcCompat="@{card.face}" />
+                app:srcCompat="@{card.face}"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="521dp" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -76,7 +94,11 @@
                 android:gravity="center"
                 android:text="@{card.name}"
                 android:textColor="@color/red"
-                android:textSize="60sp" />
-        </LinearLayout>
+                android:textSize="60sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+
     </FrameLayout>
 </layout>

@@ -8,6 +8,6 @@ data class ObservableCard(
         val name: String?,
         val text: String?,
         val avatar: Int,
-        val face: Int,
-        val background: Int
+        val face: String?,
+        val background: String?
 )

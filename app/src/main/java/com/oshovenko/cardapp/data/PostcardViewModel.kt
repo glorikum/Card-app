@@ -16,6 +16,6 @@ class PostcardViewModel(private val observableCard: ObservableCard){
     val name: LiveData<String?> = _name
     val text: LiveData<String?> = _text
     val avatar: LiveData<Int> = _avatar
-    val face: LiveData<Int> = _face
-    val background: LiveData<Int> = _background
+    val face: LiveData<String?> = _face
+    val background: LiveData<String?> = _background
 }

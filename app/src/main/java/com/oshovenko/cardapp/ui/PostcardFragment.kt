@@ -37,7 +37,7 @@ class PostcardFragment : Fragment() {
                 appSettings.getString("inputTitleText", "oops"),
                 appSettings.getString("inputName", "oops"),
                 appSettings.getString("textCard", "oops"),
-                appSettings.getInt("avatarImage", R.drawable.background_fire),
+                appSettings.getInt("avatarImage", R.drawable.ava),
                 appSettings.getString("faceImage", "oops"),
                 appSettings.getString("backgroundImage", "oops")
         )

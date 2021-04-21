@@ -98,7 +98,7 @@ class MainFragment : Fragment() {
         editor.putString("inputTitleText", binding.inputTitleText.text.toString())
         editor.putString("inputName", binding.inputName.text.toString())
         editor.putString("textCard", binding.inputTextCard.text.toString())
-        editor.putInt("avatarImage", R.drawable.apple)
+        editor.putInt("avatarImage", R.drawable.ava)
         editor.putString("faceImage", itemImage[currentFace])
         editor.putString("backgroundImage", bgImage[currentBackground])
         editor.apply()

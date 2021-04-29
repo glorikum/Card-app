@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.CardApp" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="Theme.CardApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,5 +12,41 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="textInputStyle">@style/textInputLayoutStyle</item>
+    </style>
+
+    <style name="baseRoundButton">
+        <item name="android:width">@dimen/main_button_width</item>
+        <item name="android:textSize">@dimen/main_text_size</item>
+        <item name="android:layout_height">@dimen/main_button_height</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+
+    <style name="gradientRoundButton" parent="baseRoundButton">
+        <item name="android:background">@drawable/gradient_button_background</item>
+    </style>
+
+    <style name="solidRoundButton" parent="baseRoundButton">
+        <item name="android:background">@drawable/solid_button_background</item>
+    </style>
+
+    <style name="textInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/black</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="hintEnabled">false</item>
+    </style>
+
+    <style name="editTextStyle">
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/main_text_size</item>
+        <item name="android:padding">@dimen/main_edit_text_padding</item>
+        <item name="android:paddingStart">@dimen/main_edit_text_padding</item>
+    </style>
+
+    <style name="postcardBigText">
+        <item name="android:textColor">@color/solid_background</item>
+        <item name="android:fontFamily">@font/archivo_black</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/postcard_big_text_size</item>
     </style>
 </resources>

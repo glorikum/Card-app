@@ -6,99 +6,108 @@
     <data>
 
         <variable
-            name="card"
-            type="com.oshovenko.cardapp.data.PostcardViewModel" />
+            name="viewModel"
+            type="com.oshovenko.cardapp.postcard.PostcardViewModel" />
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.PostcardFragment">
+        app:layoutDescription="@xml/fragment_postcard_xml_constraintlayout_scene"
+        tools:context=".postcard.PostcardFragment">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/backgroundImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:importantForAccessibility="no"
             android:scaleType="centerCrop"
-            tools:src="@{card.background}" />
+            android:src="@{viewModel.model.imageBackground}" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/postcardBigText"
+            android:text="@{viewModel.model.title}"
+            app:layout_constraintBottom_toTopOf="@+id/from"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/avatarContainer"
+            android:layout_width="@dimen/main_image_size"
+            android:layout_height="@dimen/main_image_size"
+            android:importantForAccessibility="no"
+            app:cardCornerRadius="@dimen/main_image_size"
+            app:layout_constraintBottom_toTopOf="@+id/cardText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/from"
+            tools:ignore="ExtraText">
+
+            <ImageView
+                android:id="@+id/postcardAvaImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@{viewModel.model.imageAva == null ? @drawable/ava : viewModel.model.imageAva}"/> />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/archivo_black"
+            android:gravity="center"
+            android:text="@string/postcard_text_from"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/postcard_text_size"
+            app:layout_constraintBottom_toTopOf="@+id/cardText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/face"
+            android:layout_width="@dimen/main_image_size"
+            android:layout_height="@dimen/main_image_size"
+            android:importantForAccessibility="no"
+            android:scaleType="centerCrop"
+            android:src="@{viewModel.model.imageFace}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardText"
+            app:layout_constraintVertical_bias="0.3"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/postcardBigText"
+            android:text="@{viewModel.model.name}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/face" />
+
+        <TextView
+            android:id="@+id/cardText"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:gravity="center"
+            android:textColor="@color/solid_background"
+            android:textSize="@dimen/postcard_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6"
+            app:multilineText="@{viewModel.model.text}"/>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/Title"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:fontFamily="@font/archivo_black"
-                android:gravity="center"
-                android:text="@{card.title}"
-                android:textColor="@color/red"
-                android:textSize="60sp"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="3dp" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/from"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/archivo_black"
-                android:gravity="center"
-                android:text="from"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="155dp" />
-
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/avatar"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:scaleType="center"
-                android:src="@drawable/ava"
-                app:riv_corner_radius="200dp"
-                app:riv_mutate_background="true" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/cardText"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:gravity="center|center_horizontal|center_vertical"
-                android:text="@{card.text}"
-                android:textColor="@color/red"
-                android:textSize="24sp"
-                tools:layout_editor_absoluteX="-16dp"
-                tools:layout_editor_absoluteY="310dp" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/face"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                app:srcCompat="@{card.face}"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="521dp" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:fontFamily="@font/archivo_black"
-                android:gravity="center"
-                android:text="@{card.name}"
-                android:textColor="@color/red"
-                android:textSize="60sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        </LinearLayout>
-
-    </FrameLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

@@ -5,263 +5,301 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.oshovenko.cardapp.main.MainViewModel" />
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:screenOrientation="landscape"
-        android:orientation="vertical"
-        tools:context=".ui.MainFragment">
+        tools:context=".main.MainFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/mainVerticalGuideline"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/backgroundImage"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/mainHorizontalGuideline20"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/mainHorizontalGuideline40"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.4" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/mainHorizontalGuideline60"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <ImageView
+            android:id="@+id/mainBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:importantForAccessibility="no"
+            android:onClick="@{() -> viewModel.getNextBackground()}"
+            android:scaleType="centerCrop"
+            android:src="@{viewModel.model.imageBackground}"
+            tools:layout_editor_absoluteX="67dp"
+            tools:layout_editor_absoluteY="191dp" />
+
+        <TextView
+            android:id="@+id/mainNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/main_text_margin"
+            android:text="@string/name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mainNameContainer"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/main_input_layout_height"
+            app:errorEnabled="true"
+            app:errorMessage="@{viewModel.errorName}"
+            app:layout_constraintEnd_toStartOf="@+id/mainVerticalGuideline"
+            app:layout_constraintStart_toStartOf="@+id/mainNameLabel"
+            app:layout_constraintTop_toBottomOf="@id/mainNameLabel">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/mainName"
+                style="@style/editTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hint="@string/enter_name_here"
+                android:text="@={viewModel.model.name}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/mainTitleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/main_text_margin"
+            android:text="@string/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainNameContainer" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mainTitleContainer"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/main_input_layout_height"
+            app:errorEnabled="true"
+            app:errorMessage="@{viewModel.errorTitle}"
+            app:layout_constraintEnd_toStartOf="@+id/mainVerticalGuideline"
+            app:layout_constraintStart_toStartOf="@+id/mainTitleLabel"
+            app:layout_constraintTop_toBottomOf="@+id/mainTitleLabel">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/mainTitle"
+                style="@style/editTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/enter_title_here"
+                android:text="@={viewModel.model.title}"
+                tools:text="dfvfvfv" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/mainTextLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/main_text_margin"
+            android:text="@string/text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mainTitleContainer" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mainTextContainer"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/main_input_layout_height"
+            app:errorEnabled="true"
+            app:errorMessage="@{viewModel.errorText}"
+            app:layout_constraintEnd_toStartOf="@+id/mainVerticalGuideline"
+            app:layout_constraintStart_toStartOf="@+id/mainTextLabel"
+            app:layout_constraintTop_toBottomOf="@+id/mainTextLabel">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/mainText"
+                style="@style/editTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/enter_text_here"
+                android:text="@={viewModel.model.text}"
+                tools:text="dfvfvfv"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mainTest"
+            style="@style/gradientRoundButton"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:onClick="@{() -> viewModel.showPostcardFragment()}"
+            android:text="@string/test"
+            app:layout_constraintBottom_toTopOf="@id/mainLaunch"
+            app:layout_constraintEnd_toEndOf="@id/mainLaunch"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/mainLaunch" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mainLaunch"
+            style="@style/solidRoundButton"
+            android:layout_width="wrap_content"
+            android:onClick="@{() -> viewModel.showPostcardFragment()}"
+            android:text="@string/launch"
+            app:layout_constraintBottom_toTopOf="@+id/mainHorizontalGuideline40"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/mainHorizontalGuideline20"
+            app:layout_constraintVertical_bias="0.75" />
+
+        <ImageButton
+            android:id="@+id/mainRightArrow"
+            android:layout_width="@dimen/main_image_size"
+            android:layout_height="@dimen/main_image_size"
+            android:background="@drawable/face_arrow_right"
+            android:foreground="@drawable/ripple_face_arrow_right"
+            android:importantForAccessibility="no"
+            android:onClick="@{() -> viewModel.getNextImage()}"
+            app:layout_constraintBottom_toBottomOf="@+id/mainFaceImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/mainFaceImage"
+            app:layout_constraintTop_toTopOf="@+id/mainFaceImage" />
+
+        <ImageButton
+            android:id="@+id/mainLeftArrow"
+            android:layout_width="@dimen/main_image_size"
+            android:layout_height="@dimen/main_image_size"
+            android:background="@drawable/face_arrow_left"
+            android:foreground="@drawable/ripple_face_arrow_left"
+            android:importantForAccessibility="no"
+            android:onClick="@{() -> viewModel.getPreviousImage()}"
+            app:layout_constraintBottom_toBottomOf="@+id/mainFaceImage"
+            app:layout_constraintEnd_toStartOf="@+id/mainFaceImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/mainFaceImage" />
+
+        <ImageView
+            android:id="@+id/mainFaceImage"
+            android:layout_width="@dimen/main_image_size"
+            android:layout_height="@dimen/main_image_size"
+            android:importantForAccessibility="no"
+            android:scaleType="centerCrop"
+            android:src="@{viewModel.model.imageFace}"
+            app:layout_constraintBottom_toTopOf="@+id/mainHorizontalGuideline60"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/mainHorizontalGuideline40"
+            tools:src="@mipmap/ic_launcher" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mainAvaImageContainer"
+            android:layout_width="@dimen/main_image_size"
+            android:layout_height="@dimen/main_image_size"
+            android:importantForAccessibility="no"
+            app:cardCornerRadius="@dimen/main_image_size"
+            app:layout_constraintBottom_toTopOf="@+id/mainHorizontalGuideline20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/mainVerticalGuideline"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_launcher_round" >
+
+            <ImageView
+                android:id="@+id/mainAvaImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="@{() -> viewModel.getAvatar()}"
                 android:scaleType="centerCrop"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="0dp" />
+                android:src="@{viewModel.model.imageAva == null ? @drawable/ava : viewModel.model.imageAva}"/>
+        </androidx.cardview.widget.CardView>
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.4" />
+        <ImageButton
+            android:id="@+id/mainPresetLeftArrow"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/main_image_size"
+            android:layout_margin="20dp"
+            android:background="@drawable/preset_arrow_left"
+            android:onClick="@{() -> viewModel.getPreviousPreset()}"
+            app:layout_constraintBottom_toBottomOf="@+id/mainPresetContainer"
+            app:layout_constraintEnd_toStartOf="@+id/mainVerticalGuideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/mainPresetContainer" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.6" />
+        <ImageButton
+            android:id="@+id/mainPresetRightArrow"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/main_image_size"
+            android:background="@drawable/preset_arrow_left"
+            android:layout_margin="20dp"
+            android:rotationY="180"
+            android:onClick="@{() -> viewModel.getNextPreset()}"
+            app:layout_constraintBottom_toBottomOf="@+id/mainPresetContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/mainVerticalGuideline"
+            app:layout_constraintTop_toTopOf="@+id/mainPresetContainer" />
 
-            <TextView
-                android:id="@+id/nameTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Name:"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mainPresetContainer"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:importantForAccessibility="no"
+            android:onClick="@{() -> viewModel.setupPresetValue()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/mainHorizontalGuideline60"
+            tools:src="@mipmap/ic_launcher_round">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
-                android:layout_width="142dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nameTitle">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputName"
+                <ImageView
+                    android:id="@+id/mainPresetImage"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
-                    android:backgroundTint="#FFFFFF"
-                    android:hint="Enter name here"
-                    android:singleLine="true"
-                    android:textSize="12sp" />
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:scaleType="fitXY"
+                    android:src="@{viewModel.model.presetImage}" />
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/titleTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Title:"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout2"
-                android:layout_width="142dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleTitle">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputTitleText"
+                <TextView
+                    android:id="@+id/mainPresetTitle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
-                    android:backgroundTint="#FFFFFF"
-                    android:hint="Enter title here"
-                    android:textSize="12sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:layout_margin="@dimen/main_text_margin"
+                    android:text="@{viewModel.model.presetTitle}"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Text"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutText"
-                android:layout_width="142dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textTitle">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputTextCard"
+                <TextView
+                    android:id="@+id/mainPresetText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
-                    android:backgroundTint="#FFFFFF"
-                    android:hint=" Enter text here"
-                    android:singleLine="true"
-                    android:textSize="12sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:textSize="@dimen/main_text_size"
+                    android:layout_margin="@dimen/main_text_margin"
+                    android:text="@{viewModel.model.presetText}" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/buttonTest"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Test"
-                app:layout_constraintBottom_toTopOf="@+id/guideline1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.7" />
 
-            <Button
-                android:id="@+id/buttonLaunch"
-                style="@android:style/Widget.DeviceDefault.Button.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Launch"
-                app:layout_constraintBottom_toTopOf="@+id/guideline1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buttonTest" />
+        </androidx.cardview.widget.CardView>
 
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/imageView1"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="16dp"
-                android:scaleType="center"
-                android:src="@drawable/ava"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.862"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/backgroundImage"
-                app:riv_corner_radius="150dp"
-                app:riv_mutate_background="true" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/faceImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/guideline2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline1"
-                />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/faceButtonRight"
-                android:layout_width="96dp"
-                android:layout_height="86dp"
-                android:background="#00FFFFFF"
-                android:src="@drawable/baseline_arrow_forward_24"
-                android:tint="@color/blue"
-                app:layout_constraintBottom_toTopOf="@+id/guideline2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/faceImage"
-                app:layout_constraintTop_toTopOf="@+id/guideline1" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/faceButtonLeft"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00FFFFFF"
-                android:src="@drawable/baseline_arrow_back_24"
-                android:tint="@color/blue"
-                app:layout_constraintBottom_toTopOf="@+id/guideline2"
-                app:layout_constraintEnd_toStartOf="@+id/faceImage"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline1" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/presetButtonRight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00FFFFFF"
-                android:src="@drawable/baseline_arrow_forward_ios_24"
-                android:tint="@color/blue"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline2" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/presetButtonLeft"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00FFFFFF"
-                android:src="@drawable/baseline_arrow_back_ios_24"
-                android:tint="@color/blue"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline2" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="206dp"
-                android:layout_height="226dp"
-                app:layout_constraintBottom_toBottomOf="@+id/backgroundImage"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline2">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="2"
-                        android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/may8"/>
-
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="fill"
-                        android:text="March 8"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="fill"
-                        android:text="Holiday" />
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
